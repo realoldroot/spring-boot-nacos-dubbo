@@ -1,0 +1,11 @@
+rootProject.name = 'spring-boot-nacos-dubo'
+
+include '1_dubbo'
+findProject(':1_dubbo')?.name = 'dubbo'
+
+include '2_provider'
+findProject(':2_provider')?.name = 'provider'
+
+
+include '3_consumer'
+findProject(':3_consumer')?.name = 'consumer'

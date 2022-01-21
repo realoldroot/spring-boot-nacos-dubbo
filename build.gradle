@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.1' apply false //默认不启用
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE' apply false
+    id 'java'
+    id 'application'
+    id 'java-library' //可以使用 api 关键字
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'application'
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    }
+
+    dependencies {
+
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+        testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+        testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    }
+}

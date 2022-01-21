@@ -1,0 +1,10 @@
+server:
+  port: 8080
+dubbo:
+  application:
+    name: provider
+  registry:
+    address: nacos://172.16.101.99:8848?namespace=test
+  protocol:
+    name: dubbo
+    port: 20081

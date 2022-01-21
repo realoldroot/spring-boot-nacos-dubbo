@@ -1,0 +1,17 @@
+group 'com.realoldroot.test'
+version '1.0'
+
+dependencies {
+    implementation project(":dubbo")
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.apache.dubbo:dubbo-spring-boot-starter:2.7.12'
+    //这个依赖在maven仓库中的版本有问题，引用的ConfigurationBeanFactoryMetadata类在Spring5中已经被删除了
+    implementation 'com.alibaba.boot:nacos-config-spring-boot-starter:0.2.10'
+
+    //这个依赖一定要使用1.0.10版本，1.0.11有适配bug https://github.com/apache/dubbo/issues/7274
+    implementation 'com.alibaba.spring:spring-context-support:1.0.10'
+}
+
+test {
+    useJUnitPlatform()
+}
